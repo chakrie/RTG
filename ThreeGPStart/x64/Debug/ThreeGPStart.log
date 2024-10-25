@@ -1,0 +1,2 @@
+﻿  Renderer.cpp
+D:\College\Real time graphics\GraphicsFramework2\ThreeGPStart\Renderer.cpp(216,20): error C2065: 'VAO': undeclared identifier
