@@ -1,6 +1,2 @@
 ﻿  Renderer.cpp
-  Simulation.cpp
-  Generating Code...
-  glew.c
-  LINK : D:\College\Real time graphics\RTG\x64\Debug\GraphicsFramework.exe not found or not built by the last incremental link; performing full link
-  ThreeGPStart.vcxproj -> D:\College\Real time graphics\RTG\x64\Debug\GraphicsFramework.exe
+  ThreeGPStart.vcxproj -> C:\Users\S3204035\Documents\GitHub\RTG\x64\Debug\GraphicsFramework.exe

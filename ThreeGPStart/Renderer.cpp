@@ -98,13 +98,12 @@ bool Renderer::InitialiseGeometry()
 	};
 
 	// Create VBO, EBO and VAO
-	GLuint VBO, EBO, m_VAO;
+	GLuint VBO, EBO;
 	glGenBuffers(1, &VBO);
 	glGenBuffers(1, &EBO);
 	glGenVertexArrays(1, &m_VAO);
 
 	// Bind VAO
-	glBindVertexArray(m_VAO);
 
 	// Bind  and fill VBO
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -146,7 +145,6 @@ bool Renderer::InitialiseGeometry()
 // Render the scene. Passed the delta time since last called.
 void Renderer::Render(const Helpers::Camera& camera, float deltaTime)
 {
-	/*
 	// Configure pipeline settings
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
@@ -190,12 +188,14 @@ void Renderer::Render(const Helpers::Camera& camera, float deltaTime)
 	glm::mat4 model = glm::mat4(1.0f); // Identity matrix for now
 	glUniformMatrix4fv(model_loc, 1, GL_FALSE, glm::value_ptr(model));
 
-	glBindVertexArray(VAO);
+	glBindVertexArray(m_VAO);
 	glDrawElements(GL_TRIANGLES, m_numElements, GL_UNSIGNED_INT, 0);
+	glBindVertexArray(0);
 
 	// Always a good idea, when debugging at least, to check for GL errors each frame
-	// Helpers::CheckForGLError();*/
+	// Helpers::CheckForGLError();
 
+	/*
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT_AND_BACK, m_wireframe ? GL_LINE : GL_FILL);
@@ -214,5 +214,6 @@ void Renderer::Render(const Helpers::Camera& camera, float deltaTime)
 	glUniformMatrix4fv(glGetUniformLocation(m_program, "model"), 1, GL_FALSE, glm::value_ptr(model));
 
 	glBindVertexArray(m_VAO);
-	glDrawElements(GL_TRIANGLES, m_numElements, GL_UNSIGNED_INT, 0);
+
+	glDrawElements(GL_TRIANGLES, m_numElements, GL_UNSIGNED_INT, 0);*/
 }
