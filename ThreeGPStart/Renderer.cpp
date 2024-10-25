@@ -10,7 +10,7 @@ Renderer::~Renderer()
 {
 	// TODO: clean up any memory used including OpenGL objects via glDelete* calls
 	glDeleteProgram(m_program);
-	glDeleteBuffers(1, &VAO);
+	glDeleteBuffers(1, &m_VAO);
 }
 
 // Use IMGUI for a simple on screen GUI
@@ -98,13 +98,13 @@ bool Renderer::InitialiseGeometry()
 	};
 
 	// Create VBO, EBO and VAO
-	GLuint VBO, EBO, VAO;
+	GLuint VBO, EBO, m_VAO;
 	glGenBuffers(1, &VBO);
 	glGenBuffers(1, &EBO);
-	glGenVertexArrays(1, &VAO);
+	glGenVertexArrays(1, &m_VAO);
 
 	// Bind VAO
-	glBindVertexArray(VAO);
+	glBindVertexArray(m_VAO);
 
 	// Bind  and fill VBO
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -213,6 +213,6 @@ void Renderer::Render(const Helpers::Camera& camera, float deltaTime)
 	glm::mat4 model = glm::mat4(1.0f); // Default model for now
 	glUniformMatrix4fv(glGetUniformLocation(m_program, "model"), 1, GL_FALSE, glm::value_ptr(model));
 
-	glBindVertexArray(VAO);
+	glBindVertexArray(m_VAO);
 	glDrawElements(GL_TRIANGLES, m_numElements, GL_UNSIGNED_INT, 0);
 }
